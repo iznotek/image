@@ -13,7 +13,8 @@ export default class Tunes {
    * @param {object} tune.actions - list of user defined tunes
    * @param {Function} tune.onChange - tune toggling callback
    */
-  constructor({ api, actions, onChange }) {
+  constructor({ plugin, api, actions, onChange }) {
+    this.plugin = plugin;
     this.api = api;
     this.actions = actions;
     this.onChange = onChange;
@@ -106,7 +107,7 @@ export default class Tunes {
    */
   tuneClicked(tuneName, customFunction) {
     if (typeof customFunction === 'function') {
-      if (!customFunction(tuneName)) {
+      if (!customFunction(tuneName, this.plugin)) {
         return false;
       }
     }

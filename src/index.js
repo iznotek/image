@@ -153,6 +153,7 @@ export default class ImageTool {
      * Module for working with tunes
      */
     this.tunes = new Tunes({
+      plugin: this,
       api,
       actions: this.config.actions,
       onChange: (tuneName) => this.tuneToggled(tuneName),
